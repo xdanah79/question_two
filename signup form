@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Form</title>
+   <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .form-container h2 {
+            font-weight: bold;
+        }
+
+        .form-container label {
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 10px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="tel"],
+        .form-container input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            border-radius: 3px;
+            border: 1px solid #e7ebd1;
+        }
+
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #b3c4d1;
+            color: #000000;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+
+        }
+
+        .details-container {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .details-container p {
+            font-weight: bold;
+        }
+
+        .required-field {
+            color: red;
+            font-weight: bold;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Sign Up Form</h2>
+        <form id="signupForm">
+            <label for="firstlastName">First/Last Name<span class="required-field">*</span>:</label>
+            <input type="text" id="firstlastName" required>
+            <br>
+
+            <label for="organization">Organization:</label>
+            <input type="text" id="organization">
+            <br>
+
+            <label for="email">Email Address<span class="required-field">*</span>:</label>
+            <input type="email" id="email" required>
+            <br>
+
+            <label for="workPhone">Work Phone:</label>
+            <input type="tel" id="workPhone">
+            <br>
+
+            
+            <label for="homePhone">Home Phone:</label>
+            <input type="tel" id="homePhone">
+            <br>
+
+            <label for="cellPhone">Cell Phone:</label>
+            <input type="tel" id="cellPhone">
+            <br>
+
+            <label for="fax">Fax:</label>
+            <input type="tel" id="fax">
+            <br>
+
+
+            <label for="address1">Address 1<span class="required-field">*</span>:</label>
+            <input type="text" id="address1" required>
+            <br>
+
+            <label for="address2">Address 2:</label>
+            <input type="text" id="address2" >
+            <br>
+
+            <label for="city">City:</label>
+            <input type="text" id="city">
+            <br>
+
+            <label for="state">State/Postal Code:</label>
+            <input type="text" id="state">
+            <br>
+
+            <label for="zip">Zip Postal Code:</label>
+            <input type="text" id="zip">
+            <br>
+
+            <label for="country">Country<span class="required-field">*</span>:</label>
+            <input type="text" id="country" required>
+            <br>
+
+            <input type="submit" value="Submit">
+        </form>
+        <p class="required-field">Please * fill in the required fields.</p>
+    </div>
+
+    <div class="details-container">
+        <h2>Congratulations <span id="fullName"></span>! You are now signed up.</h2>
+        <p id="emailDisplay"></p>
+        <p id="addressDisplay"></p>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function (event) {
+            displayDetails(event);
+        });
+
+        function displayDetails(event) {
+            event.preventDefault();
+
+            var firstlastName = document.getElementById("firstlastName").value;
+            var email = document.getElementById("email").value;
+            var address1 = document.getElementById("address1").value;
+            var country = document.getElementById("country").value;
+
+            document.getElementById("fullName").textContent = firstlastName;
+            document.getElementById("emailDisplay").textContent = "Email: " + email;
+            document.getElementById("addressDisplay").textContent = "Address: " + address1 + ", " + country;
+
+            document.getElementById("signupForm").reset();
+            document.querySelector(".form-container").style.display = "none";
+            document.querySelector(".details-container").style.display = "block";
+        }
+    </script>
+</body>
+</html>
